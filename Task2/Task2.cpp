@@ -15,6 +15,14 @@ public:
         delete[] data;
     }
 
+    // Конструктор копирования
+    smart_array(const smart_array& other) : capacity(other.capacity), size(other.size) {
+        data = new int[capacity];
+        for (int i = 0; i < size; ++i) {
+            data[i] = other.data[i];
+        }
+    }
+
     // Оператор присваивания
     smart_array& operator=(const smart_array& other) {
         if (this == &other) {
@@ -77,7 +85,11 @@ int main() {
     new_array.add_element(44);
     new_array.add_element(34);
 
-    arr = new_array;
+    smart_array arr2(arr);
+    std::cout << "arr2: ";
+    arr2.print_elements();
 
+    std::cout << "\narr: ";
+    arr = new_array;
     arr.print_elements();
 }
