@@ -15,6 +15,11 @@ public:
         delete[] data;
     }
 
+    // Запретить конструктор копирования
+    smart_array(const smart_array&) = delete;
+    // Запретить оператор присваивания
+    smart_array& operator=(const smart_array&) = delete;
+
     // Функция добавления нового элемента
     void add_element(int element) {
         if (size >= capacity) {
